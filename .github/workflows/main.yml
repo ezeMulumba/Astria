@@ -15,7 +15,9 @@ jobs:
         with:
           gradle-version: '8.7'
       - name: Décompresser le projet
-        run: unzip -q -o Lux-android-projet.zip
+        run: |
+          ls -la
+          unzip -q -o "$(ls -t *.zip | head -1)"
       - name: Compiler
         working-directory: Lux
         run: gradle assembleDebug --no-daemon --stacktrace
